@@ -130,7 +130,6 @@
             this.nudBetting.Name = "nudBetting";
             this.nudBetting.Size = new System.Drawing.Size(59, 33);
             this.nudBetting.TabIndex = 11;
-            this.nudBetting.ValueChanged += new System.EventHandler(this.nudBetting_ValueChanged);
             // 
             // lblBallance
             // 

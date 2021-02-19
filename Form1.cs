@@ -19,6 +19,39 @@ namespace Part_6._5___PSR_Project
         int betValue = 0;
         bool betSubmited = false;
         Random rng = new Random();
+        void playAgain()
+        {
+            if (wins >= 3 || cpuWins >= 3)
+            {
+                if (betSubmited == true)
+                {
+                    if (wins == 3)
+                    {
+                        money += betValue * 2;
+                    }
+                    else
+                    {
+                        money -= betValue * 4;
+                    }
+                    lblBallance.Text = $"Money: {money}";
+                }
+                imgOpponent.Visible = false;
+                imgRock.Visible = false;
+                imgPaper.Visible = false;
+                imgScissors.Visible = false;
+                lblResult.Visible = false;
+                btnNextRound.Visible = false;
+                btnPlayAgain.Visible = true;
+                nudBetting.Visible = false;
+                btnSubmitBet.Visible = false;
+                btnExit.Text = "Exit";
+                imgRock.BackColor = Color.White;
+                imgPaper.BackColor = Color.White;
+                imgScissors.BackColor = Color.White;
+                imgOpponent.BackColor = Color.White;
+            }
+            return;
+        }
 
         public frmMain()
         {
@@ -35,8 +68,6 @@ namespace Part_6._5___PSR_Project
             btnNextRound.Visible = true;
             btnSubmitBet.Enabled = false;
             nudBetting.Enabled = false;
-            imgRock.BackColor = Color.Lime;
-            imgOpponent.BackColor = Color.Red;
             if (computerChoice == 1)
             {
                 imgRock.BackColor = Color.Red;
@@ -62,35 +93,7 @@ namespace Part_6._5___PSR_Project
                 imgOpponent.Image = Properties.Resources.rock;
                 lblResult.Text = "It's a tie!";
             }
-            if (wins >= 3 || cpuWins >= 3)
-            {
-                if (betSubmited == true)
-                {
-                    if (wins == 3)
-                    {
-                        money += betValue * 2;
-                    }
-                    else
-                    {
-                        money -= betValue * 4;
-                    }
-                    lblBallance.Text = $"Money: {money}";
-                }
-                imgOpponent.Visible = false;
-                imgRock.Visible = false;
-                imgPaper.Visible = false;
-                imgScissors.Visible = false;
-                lblResult.Visible = false;
-                btnNextRound.Visible = false;
-                btnPlayAgain.Visible = true;
-                nudBetting.Visible = false;
-                btnSubmitBet.Visible = false;
-                btnExit.Text = "Exit";
-                imgRock.BackColor = Color.White;
-                imgPaper.BackColor = Color.White;
-                imgScissors.BackColor = Color.White;
-                imgOpponent.BackColor = Color.White;
-            }
+            playAgain();
         }
 
         private void imgPaper_Click(object sender, EventArgs e)
@@ -103,8 +106,6 @@ namespace Part_6._5___PSR_Project
             btnNextRound.Visible = true;
             btnSubmitBet.Enabled = false;
             nudBetting.Enabled = false;
-            imgPaper.BackColor = Color.Lime;
-            imgOpponent.BackColor = Color.Red;
             if (computerChoice == 1)
             {
                 imgPaper.BackColor = Color.SkyBlue;
@@ -130,35 +131,7 @@ namespace Part_6._5___PSR_Project
                 wins += 1;
                 lblPlayerWins.Text = $"Wins: {wins}";
             }
-            if (wins >= 3 || cpuWins >= 3)
-            {
-                if (betSubmited == true)
-                {
-                    if (wins == 3)
-                    {
-                        money += betValue * 2;
-                    }
-                    else
-                    {
-                        money -= betValue * 4;
-                    }
-                    lblBallance.Text = $"Money: {money}";
-                }
-                imgOpponent.Visible = false;
-                imgRock.Visible = false;
-                imgPaper.Visible = false;
-                imgScissors.Visible = false;
-                lblResult.Visible = false;
-                btnNextRound.Visible = false;
-                btnPlayAgain.Visible = true;
-                nudBetting.Visible = false;
-                btnSubmitBet.Visible = false;
-                btnExit.Text = "Exit";
-                imgRock.BackColor = Color.White;
-                imgPaper.BackColor = Color.White;
-                imgScissors.BackColor = Color.White;
-                imgOpponent.BackColor = Color.White;
-            }
+            playAgain();
         }
 
         private void imgScissors_Click(object sender, EventArgs e)
@@ -196,35 +169,7 @@ namespace Part_6._5___PSR_Project
                 cpuWins += 1;
                 lblCpuWins.Text = $"Wins: {cpuWins}";
             }
-            if (wins >= 3 || cpuWins >= 3)
-            {
-                if (betSubmited == true)
-                {
-                    if (wins == 3)
-                    {
-                        money += betValue * 2;                       
-                    }
-                    else
-                    {
-                        money -= betValue * 4;
-                    }
-                    lblBallance.Text = $"Money: {money}";
-                }
-                imgOpponent.Visible = false;
-                imgRock.Visible = false;
-                imgPaper.Visible = false;
-                imgScissors.Visible = false;
-                lblResult.Visible = false;
-                btnNextRound.Visible = false;
-                btnPlayAgain.Visible = true;
-                btnExit.Text = "Exit";
-                nudBetting.Visible = false;
-                btnSubmitBet.Visible = false;
-                imgRock.BackColor = Color.White;
-                imgPaper.BackColor = Color.White;
-                imgScissors.BackColor = Color.White;
-                imgOpponent.BackColor = Color.White;
-            }
+            playAgain();
         }
 
         private void btnNextRound_Click(object sender, EventArgs e)
@@ -289,10 +234,6 @@ namespace Part_6._5___PSR_Project
             betValue = Convert.ToInt32(nudBetting.Value);
             btnSubmitBet.Enabled = false;
             nudBetting.Enabled = false;
-        }
-
-        private void nudBetting_ValueChanged(object sender, EventArgs e)
-        {
         }
     }
 }
